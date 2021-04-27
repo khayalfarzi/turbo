@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: turbo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/turbo
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: turbo
+server:
+  port: 5050

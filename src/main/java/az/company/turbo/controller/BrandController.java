@@ -36,4 +36,9 @@ public class BrandController {
     public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
         return service.delete(id);
     }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<?> getByName(@PathVariable("name") String name) {
+        return service.getByName(name);
+    }
 }

@@ -2,6 +2,7 @@ package az.company.turbo.service.impl;
 
 import az.company.turbo.dto.Brand;
 import az.company.turbo.entity.BrandEntity;
+import az.company.turbo.exception.NotFoundException;
 import az.company.turbo.repository.BrandRepository;
 import az.company.turbo.service.BrandService;
 import org.springframework.http.ResponseEntity;
@@ -65,7 +66,7 @@ public class BrandServiceImpl implements BrandService {
 
     private BrandEntity getById(Integer id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Brand id not founded."));
+                .orElseThrow(() -> new NotFoundException(String.format("Brand with %s id not founded.", id)));
     }
 
     @Override
@@ -73,6 +74,6 @@ public class BrandServiceImpl implements BrandService {
         return ResponseEntity.ok(convertFromEntityToDto(
                 repository.findBrandEntityByName(name)
                         .orElseThrow(() ->
-                                new RuntimeException("The name you have entered not founded"))));
+                                new NotFoundException("The name you have entered not founded"))));
     }
 }

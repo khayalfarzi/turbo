@@ -1,3 +1,4 @@
+//POJO (Plain Old Java Object)
 package az.company.turbo.entity;
 
 import lombok.AllArgsConstructor;
@@ -5,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Getter
 @Setter
@@ -13,12 +16,7 @@ import javax.persistence.*;
 @Table(name = "BRAND", schema = "turbo")
 @NoArgsConstructor
 @AllArgsConstructor
-public class BrandEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "brand_id")
-    private Integer id;
+public class BrandEntity extends BaseEntity {
 
     @Column(name = "brand_name",
             length = 50,

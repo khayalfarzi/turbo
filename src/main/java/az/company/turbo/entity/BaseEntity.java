@@ -22,8 +22,7 @@ public class BaseEntity {
     private Integer id;
 
     @CreationTimestamp
-    @Column(name = "creation_date_time",
-            nullable = false)
+    @Column(name = "creation_date_time", nullable = false)
     private LocalDateTime dateTime;
 
     @Column(name = "status",

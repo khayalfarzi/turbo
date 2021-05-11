@@ -1,5 +1,6 @@
 package az.company.turbo.controller;
 
+import az.company.turbo.client.Response;
 import az.company.turbo.dto.Brand;
 import az.company.turbo.service.BrandService;
 import io.swagger.annotations.Api;
@@ -15,6 +16,12 @@ public class BrandController {
 
     public BrandController(BrandService service) {
         this.service = service;
+    }
+
+    @GetMapping("/d")
+    public void getByName() {
+        Response response = new Response();
+        System.out.println(response.getDistricts());
     }
 
     @PostMapping

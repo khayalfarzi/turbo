@@ -1,36 +1,21 @@
 package az.company.turbo.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class District {
 
-    private Object Status;
-    private Object StatusMessage;
-    private List<Object> Response;
-
-    public Object getStatus() {
-        return Status;
-    }
-
-    public void setStatus(Object status) {
-        Status = status;
-    }
-
-    public Object getStatusMessage() {
-        return StatusMessage;
-    }
-
-    public void setStatusMessage(Object statusMessage) {
-        StatusMessage = statusMessage;
-    }
-
-    public List<Object> getResponse() {
-        return Response;
-    }
-
-    public void setResponse(List<Object> response) {
-        Response = response;
-    }
+    private String Status;
+    private String StatusMessage;
+    private List<DistrictResponse> Response;
 
     @Override
     public String toString() {

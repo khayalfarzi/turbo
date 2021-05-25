@@ -42,9 +42,14 @@ public class UserServiceImpl implements UserService {
                 .name(user.getName())
                 .build();
 
-        if (user.getPassword().equals(user.getConfirmPassword())) {
+        if (repository.existsByUsername(user.getUsername()))
+            throw new RuntimeException("Username already exist.");
+
+        entity.setUsername(user.getUsername());
+
+        if (user.getPassword().equals(user.getConfirmPassword()))
             entity.setPassword(encoder.encode(user.getPassword()));
-        } else throw new RuntimeException("Password and password confirm don't match");
+        else throw new RuntimeException("Password and password confirm don't match");
 
         return null;
     }

@@ -1,15 +1,18 @@
 package az.company.turbo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Builder
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user_entity", schema = "turbo")
 public class UserEntity extends BaseEntity {
 
@@ -18,6 +21,14 @@ public class UserEntity extends BaseEntity {
     private String username;
 
     private String password;
+
+    @ManyToMany(targetEntity = RoleEntity.class,
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Set<RoleEntity> roles = new HashSet<>();
 
     public UserEntity(String name, String username, String password) {
         this.name = name;
